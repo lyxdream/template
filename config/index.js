@@ -1,3 +1,4 @@
+const path = require('path')
 const config = {
   projectName: 'temp5',
   date: '2024-6-27',
@@ -12,6 +13,14 @@ const config = {
   plugins: [],
   defineConstants: {
   },
+  alias: {
+    '@': path.resolve(__dirname, '..', 'src')
+  },
+  sass: {
+    resource: [
+      path.resolve(__dirname, '..', 'src/styles/_entry.scss')
+    ]
+  },
   copy: {
     patterns: [
     ],
@@ -21,6 +30,9 @@ const config = {
   framework: 'vue',
   compiler: 'webpack4',
   mini: {
+    optimizeMainPackage: { 
+      enable: true
+    },
     postcss: {
       pxtransform: {
         enable: true,
@@ -41,7 +53,26 @@ const config = {
           generateScopedName: '[name]__[local]___[hash:base64:5]'
         }
       }
-    }
+    },
+    webpackChain (chain) {
+      chain.merge({
+        plugin: {
+          install: {
+              // 解决包体积过大无法进行预览的问题
+            plugin: require('terser-webpack-plugin'),
+            args: [
+              {
+                terserOptions: {
+                  compress: true, // 默认使用terser压缩
+                  keep_classnames: true, // 不改变class名称
+                  keep_fnames: true // 不改变函数名称
+                }
+              }
+            ]
+          }
+        }
+      })
+    },
   },
   h5: {
     publicPath: '/',

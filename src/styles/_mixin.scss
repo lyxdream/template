@@ -1,0 +1,85 @@
+// 单行文本省略并添加省略号
+@mixin ellipsis {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  word-break: break-all;
+}
+
+// 多行文本省略并添加省略号
+@mixin ellipsisRows($row) {
+  display: -webkit-box;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  -webkit-line-clamp: $row;
+  -webkit-box-orient: vertical;
+}
+
+@mixin horVerCenter {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+// 垂直居中
+@mixin verCenter {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+@mixin positionHorCenter($position) {
+  position: $position;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+// 1PX border解决方案
+@mixin onePxBorder($border, $value, $borderRadiusVal: 0) {
+  & {
+    position: relative;
+    text-align: center;
+  }
+
+  &::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    pointer-events: none; // pointer-events: none 的作用是让元素实体 “虚化”。点击事件穿透这个元素
+
+    /* prettier-ignore */
+    border-radius: $borderRadiusVal;
+    #{$border}: $value;
+    width: 200%;
+    height: 200%;
+    -webkit-transform: scale(0.5);
+    transform: scale(0.5);
+    -webkit-transform-origin: left top;
+    transform-origin: left top;
+  }
+}
+
+@mixin setSafeArea($attr: 'padding-bottom',$val:0px) {
+  #{$attr}: calc(constant(safe-area-inset-bottom) + $val); /* 兼容 iOS < 11.2 */
+  #{$attr}: calc(env(safe-area-inset-bottom) + $val); /* 兼容 iOS >= 11.2 */
+  &.single {
+    #{$attr}: 0;
+  }
+}
+
+@mixin setSafePage($padding: 0px, $bgColor: #fff) {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100vw;
+  height: 100vh;
+  overflow-y: scroll;
+  background: $bgColor;
+  padding-bottom: $padding;
+  padding-bottom: calc(constant(safe-area-inset-bottom) + #{$padding}); /* 兼容 iOS < 11.2 */
+  padding-bottom: calc(env(safe-area-inset-bottom) + #{$padding}); /* 兼容 iOS >= 11.2 */
+  &.single {
+    padding-bottom: 0;
+  }
+}
