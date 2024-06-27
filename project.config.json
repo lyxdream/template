@@ -1,7 +1,7 @@
 {
   "miniprogramRoot": "dist/",
   "projectname": "temp5",
-  "description": "hah",
+  "description": "taro3-vue2项目模板",
   "appid": "wx6fc6ac299c8f3bec",
   "setting": {
     "urlCheck": true,
