@@ -1,10 +1,36 @@
+const path = require('path')
 module.exports = {
   env: {
     NODE_ENV: '"development"'
   },
   defineConstants: {
   },
-  mini: {},
+  // plugins:[],
+  plugins: [ path.resolve(__dirname, './minifyMainPackage副本.js')],
+  mini: {
+        //  // 解决包体积过大无法进行预览的问题
+        // webpackChain: (chain) => {
+        //   console.log("222")
+        //   // console.log( path.resolve(__dirname, './minifyMainPackage.js'))
+        //   chain.merge({
+        //     plugin: {
+        //       terse: {
+        //           // 解决包体积过大无法进行预览的问题
+        //         plugin: require('terser-webpack-plugin'),
+        //         args: [
+        //           {
+        //             terserOptions: {
+        //               compress: true, // 默认使用terser压缩
+        //               keep_classnames: true, // 不改变class名称
+        //               keep_fnames: true // 不改变函数名称
+        //             }
+        //           }
+        //         ]
+        //       }
+        //     }
+        //   })
+        // }
+  },
   h5: {
      /**
      * 如果h5端编译后体积过大，可以使用webpack-bundle-analyzer插件对打包体积进行分析。

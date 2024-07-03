@@ -7,7 +7,10 @@ module.exports = {
     es2021: true,
     node: true
   },
-  globals: {},
+  globals: {
+    definePageConfig:true,
+    defineAppConfig: true,
+  },
   parser: "vue-eslint-parser",
   parserOptions: {
     parser: "@babel/eslint-parser", // JavaScript 代码所使用的解析器
@@ -46,6 +49,31 @@ module.exports = {
     "vue/no-multi-spaces": ["error"], //禁止不必要的多空格出现
     "vue/prop-name-casing": ["error"], //强制组件props名称遵循一定的大小写约定
     "vue/require-default-prop": ["error"], //要求所有props都声明默认值（default value）
+    'vue/order-in-components': ['error', {
+      order: [
+        'el',
+        'name',
+        'parent',
+        'functional',
+        ['delimiters', 'comments'],
+        ['components', 'directives', 'filters'],
+        'extends',
+        'mixins',
+        'inheritAttrs',
+        'model',
+        ['props', 'propsData'],
+        'fetch',
+        'asyncData',
+        'data',
+        'computed',
+        'watch',
+        'LIFECYCLE_HOOKS',
+        'methods',
+        'head',
+        ['template', 'render'],
+        'renderError'
+      ]
+    }],
     "vue/component-name-in-template-casing": [
       "error",
       "PascalCase",
