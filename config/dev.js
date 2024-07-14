@@ -5,31 +5,8 @@ module.exports = {
   },
   defineConstants: {
   },
-  // plugins:[],
-  plugins: [ path.resolve(__dirname, './minifyMainPackage副本.js')],
+  plugins: [ path.resolve(__dirname, './minifyMainPackage.js')],
   mini: {
-        //  // 解决包体积过大无法进行预览的问题
-        // webpackChain: (chain) => {
-        //   console.log("222")
-        //   // console.log( path.resolve(__dirname, './minifyMainPackage.js'))
-        //   chain.merge({
-        //     plugin: {
-        //       terse: {
-        //           // 解决包体积过大无法进行预览的问题
-        //         plugin: require('terser-webpack-plugin'),
-        //         args: [
-        //           {
-        //             terserOptions: {
-        //               compress: true, // 默认使用terser压缩
-        //               keep_classnames: true, // 不改变class名称
-        //               keep_fnames: true // 不改变函数名称
-        //             }
-        //           }
-        //         ]
-        //       }
-        //     }
-        //   })
-        // }
   },
   h5: {
      /**

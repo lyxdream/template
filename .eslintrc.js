@@ -26,6 +26,8 @@ module.exports = {
     "no-console": process.env.NODE_ENV === "production" ? "warn" : "off",
     "no-debugger": process.env.NODE_ENV === "production" ? "warn" : "off",
     "vue/attribute-hyphenation": ["error"], //DOM 属性使用短横线命名（kebab-case）
+    'vue/html-closing-bracket-newline': ['error', { multiline: 'never' }], //这个规则控制 Vue 模板中的 HTML 标签闭合括号（>）的位置。multiline 设置为 'never' 表示不允许将闭合括号放到新的一行，
+    'vue/html-closing-bracket-spacing': ['error'],// 控制 Vue 模板中的 HTML 标签闭合括号前后的空格。
     "vue/html-indent": [
       "error",
       2,
