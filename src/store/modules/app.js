@@ -6,7 +6,7 @@ import {
 export default {
   namespaced: true,
   state: {
-    systeminfo: {}, // 设备信息
+    systemInfo: {}, // 设备信息
     isIOS: false, // 是否是ios
     isIOSFullScreen: false, // 是否是ios全面屏
     scene: '', // 当前小程序场景值
@@ -20,7 +20,7 @@ export default {
     },
     // 获取当前手机型号以及是否是iOS全面屏
     GET_PHONE_SYSTEN_INFO (state, payload) {
-      state.systeminfo = payload.systeminfo
+      state.systemInfo = payload.systemInfo
       state.isIOS = payload.isIOS
       state.isIOSFullScreen = payload.isIOSFullScreen
       state.windowHeight = payload.windowHeight
@@ -35,9 +35,9 @@ export default {
       commit('GET_APP_SCENE', scene)
     },
     // 获取当前手机型号以及是否是iOS全面屏
-    async getPhoneSystemInfo ({ commit }) {
-      const phoneSystemInfo = getPhoneSystemInfo()
-      commit('GET_PHONE_SYSTEN_INFO', phoneSystemInfo)
+    async getPhonesystemInfo ({ commit }) {
+      const phonesystemInfo = getPhoneSystemInfo()
+      commit('GET_PHONE_SYSTEN_INFO', phonesystemInfo)
     }
   }
 }

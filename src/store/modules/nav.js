@@ -49,15 +49,15 @@ export default {
         commit('SET_NAV_INFO', customNavInfo)
       } else {
         const clientRect = await getMenuButtonBoundingClientRect() // 胶囊位置信息
-        const systeminfo = Taro.getSystemInfoSync()
-        const statusBarHeight = systeminfo.statusBarHeight // 状态栏高度
+        const systemInfo = Taro.getsystemInfoSync()
+        const statusBarHeight = systemInfo.statusBarHeight // 状态栏高度
         const computedClientRect = {
           // 胶囊实际位置，坐标信息不是左上角原点
           height: clientRect.height,
           width: clientRect.width,
           top: clientRect.top - statusBarHeight,
           bottom: clientRect.bottom - clientRect.height - statusBarHeight,
-          right: systeminfo.windowWidth - clientRect.right
+          right: systemInfo.windowWidth - clientRect.right
         }
         customNavInfo = {
           clientRect,
