@@ -3,5 +3,18 @@
   "projectname": "taro3-vue2",
   "setting": {
     "compileHotReLoad": true
+  },
+  "condition": {
+    "miniprogram": {
+      "list": [
+        {
+          "name": "pages/no-network/index",
+          "pathName": "pages/no-network/index",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        }
+      ]
+    }
   }
 }

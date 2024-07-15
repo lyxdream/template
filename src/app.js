@@ -1,5 +1,6 @@
 // import Vue from 'vue'
 import store from '@/store'
+import { checkNetwork, updateApp } from '@/utils/app'
 
 import './app.scss'
 
@@ -7,6 +8,12 @@ import './app.scss'
 
 const App = {
   store,
+  onLaunch(){
+    // 检测网络
+    checkNetwork()
+    // 检查版本更新
+    updateApp()
+  },
   onShow () {
   },
   render(h) {

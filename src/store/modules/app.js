@@ -35,7 +35,7 @@ export default {
       commit('GET_APP_SCENE', scene)
     },
     // 获取当前手机型号以及是否是iOS全面屏
-    async getPhonesystemInfo ({ commit }) {
+    async getPhoneSystemInfo ({ commit }) {
       const phonesystemInfo = getPhoneSystemInfo()
       commit('GET_PHONE_SYSTEN_INFO', phonesystemInfo)
     }
