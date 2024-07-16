@@ -15,9 +15,6 @@
 <script>
 import Taro from '@tarojs/taro'
 import { checkNetwork } from '@/utils/app'
-definePageConfig({
-  navigationBarTitleText: '网络异常'
-})
 export default {
   name: 'NoNetwork',
   created () {
