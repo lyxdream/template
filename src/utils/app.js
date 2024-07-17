@@ -1,6 +1,28 @@
 import Taro from '@tarojs/taro'
 
 /**
+ * @description: 获取顶部胶囊位置信息，如果获取异常则尝试重复获取
+ */
+export async function getMenuButtonBoundingClientRect () {
+  return new Promise((resolve) => {
+    const timeId = setInterval(() => {
+      try {
+        const info = Taro.getMenuButtonBoundingClientRect()
+        const keyArr = Object.keys(info)
+        const usable = keyArr.some(key => {
+          return info[key] === 0
+        })
+        if (!usable) {
+          clearInterval(timeId)
+          resolve(info)
+        }
+      } catch (error) {
+        console.log(error)
+      }
+    }, 300)
+  })
+}
+/**
  * @description 获取当前小程序进入的场景值
  */
 export const getScene = () => {
