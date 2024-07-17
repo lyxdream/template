@@ -21,8 +21,8 @@ module.exports = {
   extends: [
     "taro/vue",
     "eslint:recommended", // 包含ESLint推荐的基本规则
-    "plugin:vue/recommended"//检查语法错误
-    // "@vue/standard",//使代码风格一致，减少人为的编码风格差异。
+    "plugin:vue/recommended",//检查语法错误
+    "@vue/standard",//使代码风格一致，减少人为的编码风格差异。
   ],
   rules: {
     "no-console": process.env.NODE_ENV === "production" ? "warn" : "off",
