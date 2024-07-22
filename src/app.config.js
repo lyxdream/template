@@ -12,5 +12,6 @@ export default defineAppConfig({
   networkTimeout: {
     request: 10000,
     downloadFile: 300000
-  }
+  },
+  lazyCodeLoading: 'requiredComponents' // 按需加载
 })

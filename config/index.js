@@ -1,4 +1,5 @@
 const path = require('path')
+const $OSS_HOST = '"@todo"'
 const config = {
   projectName: 'taro3-vue2',
   date: '2024-6-27',
@@ -12,14 +13,16 @@ const config = {
   outputRoot: 'dist',
   plugins: ['@tarojs/plugin-html'],
   defineConstants: {
+    $OSS_HOST
   },
   alias: {
     '@': path.resolve(__dirname, '..', 'src')
   },
   sass: {
-    resource: [
-      path.resolve(__dirname, '..', 'src/styles/_entry.scss')
-    ]
+    // sass 全局变量 https:nervjs.github.io/taro-docs/docs/config-detail
+    resource: ['src/styles/_entry.scss'],
+    projectDirectory: path.resolve(__dirname, '..'),
+    data: `$OSS_HOST:${$OSS_HOST};` // sass 全局变量
   },
   copy: {
     patterns: [
@@ -30,7 +33,7 @@ const config = {
   framework: 'vue',
   compiler: 'webpack4',
   mini: {
-    optimizeMainPackage: { 
+    optimizeMainPackage: {
       enable: true
     },
     postcss: {
@@ -55,7 +58,7 @@ const config = {
       }
     },
     webpackChain () {
-    },
+    }
   },
   h5: {
     publicPath: '/',
